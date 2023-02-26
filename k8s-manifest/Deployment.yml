@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: rest-api-example
+  namespace: apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-api-example
+  template:
+    metadata:
+      name: rest-api-example
+      labels:
+        app: rest-api-example
+    spec:
+      containers:
+        - name: rest-api-example
+          image: <image_name>
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          env:
+          - name: 'TZ'
+            value: "Asia/Jakarta"
